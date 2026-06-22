@@ -1,0 +1,8 @@
+[
+  {
+    "sessionId": "example-session-id-123",
+    "rootHash": "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef",
+    "timestamp": "2026-06-22T00:00:00.000Z",
+    "preview": "This is an example session memory preview saved on 0G Storage."
+  }
+]

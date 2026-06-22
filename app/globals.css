@@ -1,26 +1,132 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #030304;
+  --foreground: #ededed;
+  --accent: #10b981; /* Emerald-500 */
+  --accent-glow: rgba(16, 185, 129, 0.15);
+  
+  --card-bg: rgba(12, 12, 16, 0.45);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --console-bg: #07070a;
+  --console-header: #0c0c11;
+  --timeline-bg: #0a0a0e;
+  --chat-bg: #050508;
+  --input-bg: #050508;
+  --bubble-user: rgba(16, 185, 129, 0.08);
+  --bubble-user-border: rgba(16, 185, 129, 0.15);
+  --bubble-ai: #0a0a0f;
+  --bubble-ai-border: rgba(255, 255, 255, 0.05);
 }
 
-@theme inline {
+.light {
+  --background: #fcfcfd;
+  --foreground: #0c0c0e;
+  --accent: #059669; /* Emerald-600 */
+  --accent-glow: rgba(5, 150, 105, 0.08);
+  
+  --card-bg: rgba(243, 244, 246, 0.7);
+  --card-border: rgba(0, 0, 0, 0.08);
+  --console-bg: #ffffff;
+  --console-header: #f3f4f6;
+  --timeline-bg: #f9fafb;
+  --chat-bg: #f3f4f6;
+  --input-bg: #ffffff;
+  --bubble-user: rgba(5, 150, 105, 0.08);
+  --bubble-user-border: rgba(5, 150, 105, 0.18);
+  --bubble-ai: #ffffff;
+  --bubble-ai-border: rgba(0, 0, 0, 0.08);
+}
+
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-accent: var(--accent);
+  --color-accent-glow: var(--accent-glow);
+  
+  --color-card-bg: var(--card-bg);
+  --color-card-border: var(--card-border);
+  --color-console-bg: var(--console-bg);
+  --color-console-header: var(--console-header);
+  --color-timeline-bg: var(--timeline-bg);
+  --color-chat-bg: var(--chat-bg);
+  --color-input-bg: var(--input-bg);
+  --color-bubble-user: var(--bubble-user);
+  --color-bubble-user-border: var(--bubble-user-border);
+  --color-bubble-ai: var(--bubble-ai);
+  --color-bubble-ai-border: var(--bubble-ai-border);
+  
+  --font-sans: var(--font-inter), sans-serif;
+  --font-mono: var(--font-jetbrains-mono), monospace;
+  
+  /* Custom Animations */
+  --animate-text-gradient: text-gradient 6s ease infinite;
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-glow-pulse: glow-pulse 3s ease-in-out infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes text-gradient {
+  0%, 100% {
+    background-size: 200% 200%;
+    background-position: left center;
+  }
+  50% {
+    background-size: 200% 200%;
+    background-position: right center;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 15px 2px rgba(16, 185, 129, 0.08);
+  }
+  50% {
+    box-shadow: 0 0 25px 8px rgba(16, 185, 129, 0.22);
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom premium scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--timeline-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--card-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Radial dots grid background pattern with theme adaptation */
+.bg-grid-dots {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.light .bg-grid-dots {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px);
 }
