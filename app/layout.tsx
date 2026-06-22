@@ -18,7 +18,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: 'ChainMemory — Decentralized AI Memory',
+  title: 'ChainMemory - Decentralized AI Memory',
   description: "Your AI agent's memory, owned on-chain, stored securely and verifiably on 0G Storage.",
 };
 
