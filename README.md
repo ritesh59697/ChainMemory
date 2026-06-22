@@ -61,6 +61,11 @@ GROQ_API_KEY=your_groq_api_key_here
 ZG_PRIVATE_KEY=your_funded_wallet_private_key_here
 ZG_EVM_RPC=https://evmrpc-testnet.0g.ai
 ZG_INDEXER_RPC=https://indexer-storage-testnet-turbo.0g.ai
+
+# (Optional) Deploy contract address for On-Chain Memory Indexing
+# If this is omitted, the app operates in "Local Fallback Mode" saving indexing metadata
+# to `/data/memory-index.json` while still writing actual blocks to 0G storage nodes.
+ZG_REGISTRY_CONTRACT_ADDRESS=your_deployed_contract_address_here
 ```
 
 ### Step 3: Run the Development Server

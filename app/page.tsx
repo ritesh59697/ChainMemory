@@ -920,9 +920,20 @@ export default function ChatPage() {
       </section>
 
       {/* FOOTER */}
-      <footer className="py-12 border-t border-card-border bg-card-bg/25 text-center text-xs text-gray-600 dark:text-gray-400 space-y-2 relative z-10">
+      <footer className="py-12 border-t border-card-border bg-card-bg/25 text-center text-xs text-gray-700 dark:text-gray-400 space-y-2 relative z-10">
         <p>ChainMemory © 2026. Stored permanently on 0G Storage Nodes.</p>
-        <p className="text-[10px] text-gray-600 dark:text-gray-500">Built for the 0G Zero Cup Hackathon. Total Sovereign Decentralized AI Memory.</p>
+        <p className="text-[10px] text-gray-700 dark:text-gray-500">
+          Built for the 0G Zero Cup Hackathon by{' '}
+          <a
+            href="https://x.com/ritesh5969"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors underline font-medium"
+          >
+            ritesh5969
+          </a>
+          . Total Sovereign Decentralized AI Memory.
+        </p>
       </footer>
 
       {/* INSPECTION DETAIL MODAL */}
