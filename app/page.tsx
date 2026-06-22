@@ -360,7 +360,7 @@ export default function ChatPage() {
   const lastSavedMessage = [...messages].reverse().find(m => m.status === 'saved');
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans selection:bg-emerald-500/30 selection:text-emerald-300 bg-grid-dots relative transition-colors duration-300">
+    <div className="min-h-screen bg-background text-foreground font-sans selection:bg-emerald-500/30 selection:text-emerald-900 dark:selection:text-emerald-300 bg-grid-dots relative transition-colors duration-300">
       
       {/* Dynamic glow grids */}
       <div className="absolute top-0 left-0 w-full h-[500px] bg-[radial-gradient(ellipse_at_top,_var(--accent-glow),_transparent_60%)] pointer-events-none"></div>
