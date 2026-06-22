@@ -101,6 +101,11 @@ To deploy your own instance of the `MemoryRegistry` contract:
    ```bash
    node scripts/deploy.js
    ```
+
+The `MemoryRegistry` contract is deployed and verified on **0G Testnet EVM**:
+
+`0x5fA47420C8792142cAc5dbc608e709b68A0f0f4D`
+
 3. Update `ZG_REGISTRY_CONTRACT_ADDRESS` in `.env.local` with the deployed address.
 
 ---
@@ -134,7 +139,7 @@ ZG_EVM_RPC=https://evmrpc-testnet.0g.ai
 ZG_INDEXER_RPC=https://indexer-storage-testnet-turbo.0g.ai
 
 # Optional: on-chain memory index contract (omit to use local JSON fallback)
-ZG_REGISTRY_CONTRACT_ADDRESS=
+ZG_REGISTRY_CONTRACT_ADDRESS=0x5fA47420C8792142cAc5dbc608e709b68A0f0f4D
 ```
 
 ### Run
