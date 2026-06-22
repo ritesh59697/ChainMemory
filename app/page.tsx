@@ -73,6 +73,7 @@ export default function ChatPage() {
   // Sequential Upload Queue to avoid nonce collisions
   const uploadQueueRef = useRef<{ id: string; role: 'user' | 'assistant'; content: string }[]>([]);
   const isProcessingQueueRef = useRef(false);
+  const isFirstRender = useRef(true);
 
   const enqueueUpload = (id: string, role: 'user' | 'assistant', content: string) => {
     uploadQueueRef.current.push({ id, role, content });
@@ -121,6 +122,10 @@ export default function ChatPage() {
 
   // Scroll to bottom on new messages
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isGenerating]);
 
