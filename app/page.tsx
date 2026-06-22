@@ -8,7 +8,6 @@ import {
   Cpu, 
   Terminal, 
   ArrowRight, 
-  Copy, 
   Check, 
   Shield, 
   Activity, 
@@ -16,14 +15,10 @@ import {
   Send, 
   ChevronLeft, 
   ChevronRight, 
-  Download, 
-  Info, 
-  Play, 
   FileJson,
   Layers,
   Sparkles,
   Search,
-  ExternalLink,
   Sun,
   Moon
 } from 'lucide-react';
