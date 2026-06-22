@@ -1,120 +1,91 @@
 # ChainMemory 🧠⛓️
 
-> **Decentralized, sovereign memory for AI agents – every conversation turn Merkle-proved and anchored on 0G Storage.**
+> **Decentralized, sovereign memory for AI agents — every conversation turn Merkle-proved and permanently anchored on 0G Storage.**
 
 Built for the **[0G Zero Cup 2026](https://0g.ai/arena/zero-cup)**.
 
-**[Live Demo](https://chain-memory.vercel.app)** · **[Video](https://youtu.be/YOUR_VIDEO_URL_HERE)**
+**[Live Demo](https://chain-memory.vercel.app)** · **[Video](https://youtu.be/vfhJZoIVvHk)** · **[0G Testnet](https://evmrpc-testnet.0g.ai)**
 
 ---
 
 ## The Problem
 
-Every AI chat application today stores your conversation history in centralized servers. If the service provider shuts down, your memory logs are lost forever. More importantly, there is no cryptographic guarantee of what the AI was told or how it responded—leading to data ownership loss and zero verifiability.
+Every AI chat application today stores your conversation history in a centralized database. If the company shuts down, your history disappears. There is no way to verify what the AI was told. You don't own your data.
 
 ## The Solution
 
-ChainMemory shifts this paradigm by utilizing **0G Storage** to construct a persistent, sovereign, and verifiable memory layer for autonomous AI agents. By compiling conversation logs into Merkle trees and anchoring them directly onto decentralized nodes, your agent's memory becomes secure, permanent, and cryptographically provable.
+ChainMemory anchors every conversation turn directly onto **0G Storage nodes** — not a centralized server. Each message is Merkle-compiled into a content-addressed memory block and permanently indexed on the 0G EVM. The AI agent loads past memory on session start, giving it true cross-session recall. Your memory is yours. Forever. On-chain.
 
 ---
 
-## Technical Architecture & How 0G Storage is Used
+## How 0G Powers This
 
-```mermaid
-sequenceDiagram
-    autonumber
-    actor User
-    participant Frontend as Web Client (Next.js)
-    participant Backend as API Routes (Server)
-    participant Groq as Groq LLM (Llama 3.3)
-    participant Storage0G as 0G Storage Node
-    participant EVM as 0G Testnet EVM
+| Layer | Role |
+|---|---|
+| **0G Storage** | Every message uploaded as a `MemData` blob, content-addressed by Merkle root hash |
+| **0G EVM RPC** | Signs and confirms each storage transaction on-chain |
+| **0G Indexer (Turbo)** | Fast writes during live sessions via the turbo indexer |
 
-    User->>Frontend: Send Message
-    Frontend->>Backend: Post Message Payload
-    Backend->>Groq: Generate AI Response
-    Groq-->>Backend: Return Response
-    Backend->>Backend: Construct Memory Payload (Message + Response)
-    Backend->>Backend: Build Merkle Tree & Calculate Root Hash
-    Backend->>Storage0G: Upload Merkle-proved Binary to 0G Storage
-    Storage0G-->>Backend: Return Upload Confirmation
-    Backend->>EVM: Register Session Memory pointer (Session ID -> Root Hash)
-    EVM-->>Backend: Emit MemoryRegistered event
-    Backend-->>Frontend: Return Response + Merkle details + Storage metadata
-    Frontend->>User: Render Chat & Update Memory Timeline
+### Memory Write Flow
+
+```
+User message / AI reply
+        ↓
+Serialize → { sessionId, role, content, timestamp }
+        ↓
+MemData blob → Merkle Tree → Root Hash
+        ↓
+Sign with ZG_PRIVATE_KEY via EVM RPC
+        ↓
+Upload to 0G Storage Nodes
+        ↓
+Root Hash returned → stored in Memory Index
 ```
 
-1. **Content-Addressed Payload**: Each conversation turn `{ sessionId, role, content, timestamp }` is serialized into a raw byte array.
-2. **Merkle Proof Packaging**: The payload is wrapped into a custom `MemData` structure using `@0gfoundation/0g-storage-ts-sdk`. The SDK constructs a Merkle Tree where the root hash serves as a cryptographic digest of the memory block.
-3. **Decentralized Anchoring**: The server-side API signs the storage submission using the wallet private key (`ZG_PRIVATE_KEY`) and publishes the data directly to 0G storage nodes through the EVM RPC node and storage indexer.
-4. **Verifiable Retrieval & Indexing**: Pointers mapping `sessionId` to the Merkle `rootHash` are registered in the `MemoryRegistry.sol` Solidity contract deployed on the 0G Testnet EVM (or locally cached when operating in fallback mode).
+Anyone with a root hash can retrieve and verify the exact memory block from any 0G storage node — no centralized intermediary required.
 
 ---
 
 ## Tech Stack
 
-*   **Framework**: Next.js 14 (App Router) + TypeScript
-*   **Styling**: Tailwind CSS (Clean, premium dark/light mode contrast)
-*   **AI Core**: Groq SDK using the `llama-3.3-70b-versatile` model
-*   **Decentralized Storage**: `@0gfoundation/0g-storage-ts-sdk`
-*   **Web3 Engine**: Ethers.js v6 for signing storage transactions and contract interactions
-*   **Smart Contract Tooling**: Hardhat for compilation and deployment
+| | |
+|---|---|
+| **Framework** | Next.js 14 (App Router) + TypeScript |
+| **Styling** | Tailwind CSS — minimal premium dark theme |
+| **AI** | Groq SDK · `llama-3.3-70b-versatile` |
+| **Decentralized Storage** | `@0gfoundation/0g-storage-ts-sdk` |
+| **Web3** | ethers v6 — server-side signing only |
+| **Deployment** | Vercel |
 
 ---
 
-## Project Structure
+## Key Features
 
-```
-├── app/
-│   ├── api/
-│   │   ├── chat/              # Groq integration
-│   │   ├── memory/
-│   │   │   ├── fetch/         # Retrieves logs from 0G Storage Indexer
-│   │   │   ├── index/         # Local metadata index fallback
-│   │   │   └── save/          # Packages payload & uploads to 0G Storage Nodes
-│   │   └── page.tsx           # Dashboard UI with sidebar timeline and verification modal
-├── contracts/
-│   └── MemoryRegistry.sol     # Mapping session IDs to 0G Merkle root hashes
-├── scripts/
-│   └── deploy.js              # Standard contract deployment script
-└── public/                    # Clean assets and cover imagery
-```
+- **Real-time memory writing** — every message (user + AI) is uploaded to 0G Storage immediately after generation
+- **Cross-session recall** — agent loads past memory on session start and injects it into context
+- **Memory Timeline** — sidebar showing all past memory blocks with copyable Merkle root hashes
+- **Atomic upload queue** — sequential uploads prevent EVM nonce collisions
+- **Verifiable by anyone** — any root hash can be independently verified on 0G storage nodes
+- **Server-side only SDK** — 0G Storage SDK runs exclusively in Next.js API routes (Node.js runtime) to avoid browser polyfill issues
 
 ---
 
-## Setup & Local Installation
+## Architecture
 
-### Prerequisites
-*   Node.js 18+ and npm
-*   A Groq API key
-*   An EVM private key funded with 0G Testnet tokens (claimable on the [0G Faucet](https://faucet.0g.ai/))
-
-### Step 1: Install Dependencies
-```bash
-npm install
+```
+/app
+├── page.tsx                    # Chat UI + Memory Timeline sidebar
+└── api/
+    ├── chat/route.ts           # Groq AI completions endpoint
+    └── memory/
+        ├── save/route.ts       # Upload message to 0G Storage (Node runtime)
+        ├── fetch/route.ts      # Fetch memory block by root hash
+        └── index/route.ts      # GET/POST memory index registry
+/data
+└── memory-index.json           # Local index of { sessionId, rootHash, timestamp, preview }
 ```
 
-### Step 2: Configure Environment Variables
-Copy the template `.env.example` to `.env.local`:
-```bash
-cp .env.example .env.local
-```
-Configure your environment variables:
-```env
-GROQ_API_KEY=your_groq_api_key_here
-ZG_PRIVATE_KEY=your_funded_wallet_private_key_here
-ZG_EVM_RPC=https://evmrpc-testnet.0g.ai
-ZG_INDEXER_RPC=https://indexer-storage-testnet-turbo.0g.ai
-
-# (Optional) Contract address for on-chain indexing
-# Omit this to run in Local Fallback Mode
-ZG_REGISTRY_CONTRACT_ADDRESS=your_deployed_contract_address_here
-```
-
-### Step 3: Run the App
-```bash
-npm run dev
-```
+> **Note:** The memory index uses a local JSON file as a fallback if the smart contract registry address is not set.
 
 ---
 
@@ -131,3 +102,54 @@ To deploy your own instance of the `MemoryRegistry` contract:
    node scripts/deploy.js
    ```
 3. Update `ZG_REGISTRY_CONTRACT_ADDRESS` in `.env.local` with the deployed address.
+
+---
+
+## Local Setup
+
+### Prerequisites
+
+- Node.js 18+
+- Groq API key → [console.groq.com](https://console.groq.com)
+- EVM wallet private key funded with 0G testnet tokens → [faucet.0g.ai](https://faucet.0g.ai)
+
+### Install
+
+```bash
+git clone https://github.com/ritesh59697/ChainMemory
+cd ChainMemory
+npm install
+```
+
+### Configure
+
+```bash
+cp .env.example .env.local
+```
+
+```env
+GROQ_API_KEY=your_groq_api_key
+ZG_PRIVATE_KEY=your_funded_wallet_private_key
+ZG_EVM_RPC=https://evmrpc-testnet.0g.ai
+ZG_INDEXER_RPC=https://indexer-storage-testnet-turbo.0g.ai
+
+# Optional: on-chain memory index contract (omit to use local JSON fallback)
+ZG_REGISTRY_CONTRACT_ADDRESS=
+```
+
+### Run
+
+```bash
+npm run dev
+# → http://localhost:3000
+```
+
+---
+
+## Built for 0G Zero Cup 2026
+
+ChainMemory demonstrates how decentralized storage networks can power sovereign, permanent memory layers for autonomous AI agents — a foundational primitive for the agentic web.
+
+---
+
+*Built by [@Ritesh5969](https://x.com/Ritesh5969)*
