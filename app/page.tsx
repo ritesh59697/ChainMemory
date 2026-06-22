@@ -444,14 +444,14 @@ export default function ChatPage() {
             className="text-5xl md:text-7.5xl font-display font-bold tracking-tight leading-[1.05]"
           >
             Decentralized Sovereign <br/>
-            <span className="bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 dark:from-emerald-400 dark:via-emerald-300 dark:to-teal-300 bg-clip-text text-transparent animate-text-gradient bg-[length:200%_200%]">
+            <span className="bg-gradient-to-r from-emerald-700 via-emerald-600 to-teal-600 dark:from-emerald-400 dark:via-emerald-300 dark:to-teal-300 bg-clip-text text-transparent animate-text-gradient bg-[length:200%_200%]">
               AI Agent Memory
             </span>
           </motion.h1>
 
           <motion.p 
             variants={heroItemVariants}
-            className="text-gray-700 dark:text-gray-300 max-w-2xl mx-auto text-sm md:text-base leading-relaxed"
+            className="text-gray-800 dark:text-gray-300 max-w-2xl mx-auto text-sm md:text-base leading-relaxed"
           >
             Stop relying on centralized databases. ChainMemory anchors your AI agent&apos;s conversation history directly onto 0G Storage nodes, signed securely and indexed on the 0G Testnet EVM.
           </motion.p>
@@ -463,7 +463,7 @@ export default function ChatPage() {
           >
             <button
               onClick={scrollToConsole}
-              className="w-full sm:w-auto px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 dark:bg-emerald-400 dark:hover:bg-emerald-500 text-white dark:text-black font-semibold text-sm transition-all shadow-[0_0_20px_rgba(16,185,129,0.2)] hover:shadow-[0_0_30px_rgba(16,185,129,0.35)] hover:scale-[1.02] flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full sm:w-auto px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-400 dark:hover:bg-emerald-500 text-white dark:text-black font-semibold text-sm transition-all shadow-[0_0_20px_rgba(16,185,129,0.2)] hover:shadow-[0_0_30px_rgba(16,185,129,0.35)] hover:scale-[1.02] flex items-center justify-center gap-2 cursor-pointer"
             >
               Open Agent Console
               <ArrowRight className="h-4 w-4" />
@@ -471,11 +471,11 @@ export default function ChatPage() {
             {config.contractAddress && (
               <button
                 onClick={() => handleCopyText(config.contractAddress, 'Registry Address')}
-                className="w-full sm:w-auto px-6 py-3 rounded-xl border border-card-border/80 bg-card-bg/60 text-xs font-mono text-foreground hover:text-emerald-500 dark:hover:text-emerald-400 transition-all flex items-center justify-center gap-2 cursor-pointer hover:border-emerald-500/20 shadow-sm bg-noise-grain backdrop-blur-md"
+                className="w-full sm:w-auto px-6 py-3 rounded-xl border border-card-border/80 bg-card-bg/60 text-xs font-mono text-foreground hover:text-emerald-600 dark:hover:text-emerald-400 transition-all flex items-center justify-center gap-2 cursor-pointer hover:border-emerald-500/20 shadow-sm bg-noise-grain backdrop-blur-md"
               >
                 <span>Registry: {config.contractAddress.substring(0, 8)}...{config.contractAddress.slice(-6)}</span>
-                <span className="text-[10px] text-emerald-500 dark:text-emerald-400 font-semibold">
-                  {copiedText === 'Registry Address' ? <Check className="h-3 w-3 text-emerald-500" /> : 'Copy'}
+                <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-semibold">
+                  {copiedText === 'Registry Address' ? <Check className="h-3 w-3 text-emerald-600 dark:text-emerald-400" /> : 'Copy'}
                 </span>
               </button>
             )}
@@ -485,20 +485,20 @@ export default function ChatPage() {
         {/* Live Network Metrics Grid */}
         <div className="max-w-4xl w-full grid grid-cols-2 md:grid-cols-4 gap-4 mt-20 z-10 px-4">
           <div className="bg-card-bg/60 border border-card-border/80 p-4 rounded-xl text-center space-y-1 backdrop-blur-md shadow-md bg-noise-grain">
-            <span className="block text-[10px] font-semibold text-gray-600 dark:text-gray-400 uppercase font-mono tracking-wider">Index Blocks</span>
-            <span className="block text-xl font-bold text-emerald-600 dark:text-emerald-400 font-mono">{historyList.length}</span>
+            <span className="block text-[10px] font-semibold text-gray-700 dark:text-gray-400 uppercase font-mono tracking-wider">Index Blocks</span>
+            <span className="block text-xl font-bold text-emerald-700 dark:text-emerald-400 font-mono">{historyList.length}</span>
           </div>
           <div className="bg-card-bg/60 border border-card-border/80 p-4 rounded-xl text-center space-y-1 backdrop-blur-md shadow-md bg-noise-grain">
-            <span className="block text-[10px] font-semibold text-gray-600 dark:text-gray-400 uppercase font-mono tracking-wider">DA Layer</span>
+            <span className="block text-[10px] font-semibold text-gray-700 dark:text-gray-400 uppercase font-mono tracking-wider">DA Layer</span>
             <span className="block text-xs font-bold text-foreground font-mono truncate" title={config.indexerRpc}>0G Storage Indexer</span>
           </div>
           <div className="bg-card-bg/60 border border-card-border/80 p-4 rounded-xl text-center space-y-1 backdrop-blur-md shadow-md bg-noise-grain">
-            <span className="block text-[10px] font-semibold text-gray-600 dark:text-gray-400 uppercase font-mono tracking-wider">Registry Network</span>
+            <span className="block text-[10px] font-semibold text-gray-700 dark:text-gray-400 uppercase font-mono tracking-wider">Registry Network</span>
             <span className="block text-xs font-bold text-foreground font-mono truncate">0G Testnet EVM</span>
           </div>
           <div className="bg-card-bg/60 border border-card-border/80 p-4 rounded-xl text-center space-y-1 backdrop-blur-md shadow-md bg-noise-grain">
-            <span className="block text-[10px] font-semibold text-gray-600 dark:text-gray-400 uppercase font-mono tracking-wider">Registry Type</span>
-            <span className="block text-xs font-bold text-indigo-500 dark:text-indigo-400 font-mono uppercase tracking-wide">Solidity Contract</span>
+            <span className="block text-[10px] font-semibold text-gray-700 dark:text-gray-400 uppercase font-mono tracking-wider">Registry Type</span>
+            <span className="block text-xs font-bold text-indigo-650 dark:text-indigo-400 font-mono uppercase tracking-wide">Solidity Contract</span>
           </div>
         </div>
       </section>
@@ -510,7 +510,7 @@ export default function ChatPage() {
         
         <div className="text-center space-y-2 relative z-10">
           <h2 className="text-3xl md:text-4xl font-display font-bold tracking-tight text-foreground">Sovereign Architecture Features</h2>
-          <p className="text-xs text-gray-700 dark:text-gray-300 max-w-lg mx-auto">Built from the ground up for privacy, performance, and absolute decentralization.</p>
+          <p className="text-xs text-gray-800 dark:text-gray-300 max-w-lg mx-auto">Built from the ground up for privacy, performance, and absolute decentralization.</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6 relative z-10">
@@ -520,10 +520,10 @@ export default function ChatPage() {
             className="p-6 rounded-2xl border border-card-border bg-card-bg/60 backdrop-blur-sm transition-all space-y-3 shadow-md bg-noise-grain"
           >
             <div className="h-10 w-10 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center relative z-10">
-              <Database className="h-5 w-5 text-emerald-500" />
+              <Database className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
             </div>
             <h3 className="text-base font-bold text-foreground relative z-10">0G Storage Integration</h3>
-            <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed relative z-10">
+            <p className="text-xs text-gray-700 dark:text-gray-400 leading-relaxed relative z-10">
               Every turn of the conversation is serialized to JSON and stored directly on 0G Storage Nodes as content-addressed files. Validated using Merkle roots.
             </p>
           </motion.div>
@@ -534,10 +534,10 @@ export default function ChatPage() {
             className="p-6 rounded-2xl border border-card-border bg-card-bg/60 backdrop-blur-sm transition-all space-y-3 shadow-md bg-noise-grain"
           >
             <div className="h-10 w-10 rounded-lg bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center relative z-10">
-              <Layers className="h-5 w-5 text-indigo-500" />
+              <Layers className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
             </div>
             <h3 className="text-base font-bold text-foreground relative z-10">On-Chain Solidity Registry</h3>
-            <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed relative z-10">
+            <p className="text-xs text-gray-700 dark:text-gray-400 leading-relaxed relative z-10">
               No central indexer. All block hashes and timestamps are registered inside an EVM smart contract (`MemoryRegistry.sol`) on 0G Testnet for total transparency.
             </p>
           </motion.div>
@@ -548,10 +548,10 @@ export default function ChatPage() {
             className="p-6 rounded-2xl border border-card-border bg-card-bg/60 backdrop-blur-sm transition-all space-y-3 shadow-md bg-noise-grain"
           >
             <div className="h-10 w-10 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center relative z-10">
-              <Cpu className="h-5 w-5 text-amber-500" />
+              <Cpu className="h-5 w-5 text-amber-600 dark:text-amber-400" />
             </div>
             <h3 className="text-base font-bold text-foreground relative z-10">Atomic Nonce Engine</h3>
-            <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed relative z-10">
+            <p className="text-xs text-gray-700 dark:text-gray-400 leading-relaxed relative z-10">
               Equipped with a client-side sequential upload queue to serialize EVM transactions, completely bypassing pending nonce conflicts (`REPLACEMENT_UNDERPRICED`).
             </p>
           </motion.div>
@@ -583,11 +583,11 @@ export default function ChatPage() {
               className={`snap-center flex-shrink-0 w-[78%] sm:w-[50%] md:w-auto p-4 rounded-xl border z-10 cursor-pointer transition-all bg-noise-grain backdrop-blur-sm ${activeStep === 1 ? 'border-emerald-500 bg-emerald-500/8 dark:bg-emerald-500/5 shadow-[0_0_20px_rgba(16,185,129,0.12)]' : 'border-card-border bg-card-bg hover:border-emerald-500/35'}`}
             >
               <div className="flex items-center justify-between mb-1 relative z-10">
-                <span className="block text-[10px] font-bold text-emerald-500 dark:text-emerald-400 font-mono uppercase">Step 01</span>
-                <Brain className={`h-3.5 w-3.5 ${activeStep === 1 ? 'text-emerald-500 animate-pulse' : 'text-gray-600 dark:text-gray-400'}`} />
+                <span className="block text-[10px] font-bold text-emerald-600 dark:text-emerald-400 font-mono uppercase">Step 01</span>
+                <Brain className={`h-3.5 w-3.5 ${activeStep === 1 ? 'text-emerald-600 dark:text-emerald-400 animate-pulse' : 'text-gray-700 dark:text-gray-400'}`} />
               </div>
               <h4 className="text-xs font-bold text-foreground mb-1 relative z-10">Chat Generation</h4>
-              <p className="text-[10px] text-gray-600 dark:text-gray-400 leading-normal relative z-10">Groq executes Llama-3.3-70b inside the API route.</p>
+              <p className="text-[10px] text-gray-700 dark:text-gray-400 leading-normal relative z-10">Groq executes Llama-3.3-70b inside the API route.</p>
             </motion.div>
 
             {/* Step 2 */}
@@ -597,11 +597,11 @@ export default function ChatPage() {
               className={`snap-center flex-shrink-0 w-[78%] sm:w-[50%] md:w-auto p-4 rounded-xl border z-10 cursor-pointer transition-all bg-noise-grain backdrop-blur-sm ${activeStep === 2 ? 'border-emerald-500 bg-emerald-500/8 dark:bg-emerald-500/5 shadow-[0_0_20px_rgba(16,185,129,0.12)]' : 'border-card-border bg-card-bg hover:border-emerald-500/35'}`}
             >
               <div className="flex items-center justify-between mb-1 relative z-10">
-                <span className="block text-[10px] font-bold text-emerald-500 dark:text-emerald-400 font-mono uppercase">Step 02</span>
-                <FileJson className={`h-3.5 w-3.5 ${activeStep === 2 ? 'text-emerald-500 animate-pulse' : 'text-gray-600 dark:text-gray-400'}`} />
+                <span className="block text-[10px] font-bold text-emerald-600 dark:text-emerald-400 font-mono uppercase">Step 02</span>
+                <FileJson className={`h-3.5 w-3.5 ${activeStep === 2 ? 'text-emerald-600 dark:text-emerald-400 animate-pulse' : 'text-gray-700 dark:text-gray-400'}`} />
               </div>
               <h4 className="text-xs font-bold text-foreground mb-1 relative z-10">Merkle Proofing</h4>
-              <p className="text-[10px] text-gray-600 dark:text-gray-400 leading-normal relative z-10">Bytes are encoded into MemData, creating a Merkle root hash.</p>
+              <p className="text-[10px] text-gray-700 dark:text-gray-400 leading-normal relative z-10">Bytes are encoded into MemData, creating a Merkle root hash.</p>
             </motion.div>
 
             {/* Step 3 */}
@@ -611,11 +611,11 @@ export default function ChatPage() {
               className={`snap-center flex-shrink-0 w-[78%] sm:w-[50%] md:w-auto p-4 rounded-xl border z-10 cursor-pointer transition-all bg-noise-grain backdrop-blur-sm ${activeStep === 3 ? 'border-emerald-500 bg-emerald-500/8 dark:bg-emerald-500/5 shadow-[0_0_20px_rgba(16,185,129,0.12)]' : 'border-card-border bg-card-bg hover:border-emerald-500/35'}`}
             >
               <div className="flex items-center justify-between mb-1 relative z-10">
-                <span className="block text-[10px] font-bold text-emerald-500 dark:text-emerald-400 font-mono uppercase">Step 03</span>
-                <Database className={`h-3.5 w-3.5 ${activeStep === 3 ? 'text-emerald-500 animate-pulse' : 'text-gray-600 dark:text-gray-400'}`} />
+                <span className="block text-[10px] font-bold text-emerald-600 dark:text-emerald-400 font-mono uppercase">Step 03</span>
+                <Database className={`h-3.5 w-3.5 ${activeStep === 3 ? 'text-emerald-600 dark:text-emerald-400 animate-pulse' : 'text-gray-700 dark:text-gray-400'}`} />
               </div>
               <h4 className="text-xs font-bold text-foreground mb-1 relative z-10">0G Storage Push</h4>
-              <p className="text-[10px] text-gray-600 dark:text-gray-400 leading-normal relative z-10">The indexer writes raw bytes securely across storage nodes.</p>
+              <p className="text-[10px] text-gray-700 dark:text-gray-400 leading-normal relative z-10">The indexer writes raw bytes securely across storage nodes.</p>
             </motion.div>
 
             {/* Step 4 */}
@@ -625,11 +625,11 @@ export default function ChatPage() {
               className={`snap-center flex-shrink-0 w-[78%] sm:w-[50%] md:w-auto p-4 rounded-xl border z-10 cursor-pointer transition-all bg-noise-grain backdrop-blur-sm ${activeStep === 4 ? 'border-emerald-500 bg-emerald-500/8 dark:bg-emerald-500/5 shadow-[0_0_20px_rgba(16,185,129,0.12)]' : 'border-card-border bg-card-bg hover:border-emerald-500/35'}`}
             >
               <div className="flex items-center justify-between mb-1 relative z-10">
-                <span className="block text-[10px] font-bold text-emerald-500 dark:text-emerald-400 font-mono uppercase">Step 04</span>
-                <Layers className={`h-3.5 w-3.5 ${activeStep === 4 ? 'text-emerald-500 animate-pulse' : 'text-gray-600 dark:text-gray-400'}`} />
+                <span className="block text-[10px] font-bold text-emerald-600 dark:text-emerald-400 font-mono uppercase">Step 04</span>
+                <Layers className={`h-3.5 w-3.5 ${activeStep === 4 ? 'text-emerald-600 dark:text-emerald-400 animate-pulse' : 'text-gray-700 dark:text-gray-400'}`} />
               </div>
               <h4 className="text-xs font-bold text-foreground mb-1 relative z-10">On-Chain Anchor</h4>
-              <p className="text-[10px] text-gray-600 dark:text-gray-400 leading-normal relative z-10">EVM writes reference rootHash and timestamp to Solidity registry.</p>
+              <p className="text-[10px] text-gray-700 dark:text-gray-400 leading-normal relative z-10">EVM writes reference rootHash and timestamp to Solidity registry.</p>
             </motion.div>
 
             {/* Step 5 */}
@@ -639,17 +639,17 @@ export default function ChatPage() {
               className={`snap-center flex-shrink-0 w-[78%] sm:w-[50%] md:w-auto p-4 rounded-xl border z-10 cursor-pointer transition-all bg-noise-grain backdrop-blur-sm ${activeStep === 5 ? 'border-emerald-500 bg-emerald-500/8 dark:bg-emerald-500/5 shadow-[0_0_20px_rgba(16,185,129,0.12)]' : 'border-card-border bg-card-bg hover:border-emerald-500/35'}`}
             >
               <div className="flex items-center justify-between mb-1 relative z-10">
-                <span className="block text-[10px] font-bold text-emerald-500 dark:text-emerald-400 font-mono uppercase">Step 05</span>
-                <Search className={`h-3.5 w-3.5 ${activeStep === 5 ? 'text-emerald-500 animate-pulse' : 'text-gray-600 dark:text-gray-400'}`} />
+                <span className="block text-[10px] font-bold text-emerald-600 dark:text-emerald-400 font-mono uppercase">Step 05</span>
+                <Search className={`h-3.5 w-3.5 ${activeStep === 5 ? 'text-emerald-600 dark:text-emerald-400 animate-pulse' : 'text-gray-700 dark:text-gray-400'}`} />
               </div>
               <h4 className="text-xs font-bold text-foreground mb-1 relative z-10">Recall Verification</h4>
-              <p className="text-[10px] text-gray-600 dark:text-gray-400 leading-normal relative z-10">Click timeline: client requests fetch route to pull and decode memory.</p>
+              <p className="text-[10px] text-gray-700 dark:text-gray-400 leading-normal relative z-10">Click timeline: client requests fetch route to pull and decode memory.</p>
             </motion.div>
 
           </div>
 
           {/* Mobile Swipe Hint */}
-          <div className="flex md:hidden items-center justify-center gap-1.5 text-[10px] text-gray-600 dark:text-gray-400 font-medium pb-2 select-none">
+          <div className="flex md:hidden items-center justify-center gap-1.5 text-[10px] text-gray-700 dark:text-gray-400 font-medium pb-2 select-none">
             <span>Swipe steps</span>
             <span className="w-1 h-1 rounded-full bg-emerald-500/60 animate-pulse"></span>
             <span className="w-1 h-1 rounded-full bg-emerald-500/40"></span>
@@ -659,11 +659,11 @@ export default function ChatPage() {
           {/* Dynamic Map Detail Card */}
           <div className="bg-card-bg/60 border border-card-border rounded-2xl p-6 min-h-[120px] flex items-center justify-between gap-6 shadow-md bg-noise-grain backdrop-blur-md relative z-10">
             <div className="space-y-1.5 max-w-2xl relative z-10">
-              <h4 className="text-sm font-bold text-foreground uppercase tracking-wide font-mono text-emerald-500 dark:text-emerald-400 flex items-center gap-1.5">
-                <Activity className="h-4 w-4 text-emerald-500" />
+              <h4 className="text-sm font-bold text-foreground uppercase tracking-wide font-mono text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
+                <Activity className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
                 {activeStep === null ? 'System Active' : `Phase Details: Step 0${activeStep}`}
               </h4>
-              <p className="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">
+              <p className="text-xs text-gray-800 dark:text-gray-300 leading-relaxed">
                 {activeStep === null && 'Click on any step or interact with the playground below. The visual nodes light up automatically during the save and recall lifecycle.'}
                 {activeStep === 1 && 'When you click Send, the user message text is pushed directly to the next.js chat endpoint. Groq executes Llama-3.3-70b inside the API route.'}
                 {activeStep === 2 && 'Before submitting, we convert the JSON string into standard UTF-8 bytes and feed them into the SDK. This generates leaf hashes and compiles them to compute a single content-addressed rootHash.'}
@@ -689,7 +689,7 @@ export default function ChatPage() {
         
         <div className="text-center space-y-2 relative z-10">
           <h2 className="text-3xl md:text-4xl font-display font-bold tracking-tight text-foreground">Playground Console</h2>
-          <p className="text-xs text-gray-700 dark:text-gray-300 max-w-lg mx-auto">Interact with the AI agent below and watch data sync to 0G in real-time.</p>
+          <p className="text-xs text-gray-800 dark:text-gray-300 max-w-lg mx-auto">Interact with the AI agent below and watch data sync to 0G in real-time.</p>
         </div>
 
         {/* Embedded Console Panel */}
@@ -743,15 +743,15 @@ export default function ChatPage() {
                   transition={{ duration: 0.25, type: 'tween' }}
                   className="absolute md:relative inset-y-0 left-0 z-30 h-full w-[288px] max-w-[85vw] border-r border-card-border flex flex-col flex-shrink-0 overflow-hidden bg-timeline-bg transition-colors duration-300 bg-noise-grain shadow-2xl md:shadow-none"
                 >
-                  <div className="p-3 border-b border-card-border flex items-center justify-between text-xs text-gray-700 dark:text-gray-400 font-mono">
-                    <span className="flex items-center gap-1"><Database className="h-3 w-3 text-emerald-500" /> 0G REGISTRY INDEX</span>
-                    <span className="text-emerald-600 dark:text-emerald-400 bg-emerald-500/5 dark:bg-emerald-500/10 px-2 py-0.5 rounded font-semibold">{historyList.length}</span>
+                  <div className="p-3 border-b border-card-border flex items-center justify-between text-xs text-gray-800 dark:text-gray-400 font-mono">
+                    <span className="flex items-center gap-1"><Database className="h-3 w-3 text-emerald-600 dark:text-emerald-400" /> 0G REGISTRY INDEX</span>
+                    <span className="text-emerald-700 dark:text-emerald-400 bg-emerald-500/5 dark:bg-emerald-500/10 px-2 py-0.5 rounded font-semibold">{historyList.length}</span>
                   </div>
 
                   <div className="flex-1 overflow-y-auto p-2 space-y-2">
                     {historyList.length === 0 ? (
                       <div className="h-full flex flex-col items-center justify-center text-center p-4">
-                        <span className="text-xs text-gray-600 dark:text-gray-400 font-mono italic">No transaction registry entries</span>
+                        <span className="text-xs text-gray-750 dark:text-gray-400 font-mono italic">No transaction registry entries</span>
                       </div>
                     ) : (
                       historyList.map((item, idx) => (
@@ -763,23 +763,23 @@ export default function ChatPage() {
                           onClick={() => handleInspectMemory(item)}
                           className="group flex flex-col p-2.5 rounded-lg border border-card-border bg-console-bg hover:bg-chat-bg hover:border-emerald-500/20 transition-all cursor-pointer shadow-sm bg-noise-grain"
                         >
-                          <div className="flex justify-between items-center text-[10px] text-gray-650 dark:text-gray-400 font-mono mb-1">
-                            <span className="text-emerald-600 dark:text-emerald-400 font-bold group-hover:text-emerald-500 flex items-center gap-0.5">
+                          <div className="flex justify-between items-center text-[10px] text-gray-700 dark:text-gray-400 font-mono mb-1">
+                            <span className="text-emerald-700 dark:text-emerald-400 font-bold group-hover:text-emerald-600 dark:group-hover:text-emerald-400 flex items-center gap-0.5">
                               <Layers className="h-2 w-2" /> 0G Node
                             </span>
                             <span>{formatDate(item.timestamp)}</span>
                           </div>
-                          <p className="text-xs text-gray-755 dark:text-gray-300 line-clamp-1 leading-normal mb-1.5">
+                          <p className="text-xs text-gray-800 dark:text-gray-300 line-clamp-1 leading-normal mb-1.5">
                             {item.preview}
                           </p>
                           <div 
                             onClick={(e) => handleCopyHash(e, item.rootHash)}
-                            className="flex items-center justify-between text-[10px] font-mono bg-chat-bg border border-card-border px-1.5 py-0.5 rounded hover:text-emerald-500 transition-colors"
+                            className="flex items-center justify-between text-[10px] font-mono bg-chat-bg border border-card-border px-1.5 py-0.5 rounded hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
                           >
-                            <span className="truncate max-w-[130px] text-gray-600 dark:text-gray-400">
+                            <span className="truncate max-w-[130px] text-gray-700 dark:text-gray-400">
                               root: {item.rootHash.substring(0, 8)}...{item.rootHash.slice(-6)}
                             </span>
-                            <span className="text-[9px] text-gray-600 dark:text-gray-400 font-sans">
+                            <span className="text-[9px] text-gray-700 dark:text-gray-400 font-sans">
                               {copiedHash === item.rootHash ? 'Copied' : 'Copy'}
                             </span>
                           </div>
@@ -943,7 +943,7 @@ export default function ChatPage() {
                     <Layers className="h-3.5 w-3.5 text-emerald-500 animate-pulse" />
                     0G Storage Node Block Details
                   </h3>
-                  <p className="text-xs text-gray-600 dark:text-gray-400 mt-0.5">Retrieved via indexer.download from decentralized nodes</p>
+                  <p className="text-xs text-gray-700 dark:text-gray-400 mt-0.5">Retrieved via indexer.download from decentralized nodes</p>
                 </div>
                 <button 
                   onClick={() => {
@@ -951,7 +951,7 @@ export default function ChatPage() {
                     setFetchedMemory(null);
                     setFetchError(null);
                   }}
-                  className="text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors text-sm font-bold bg-[#1b1b26] h-6 w-6 flex items-center justify-center rounded cursor-pointer"
+                  className="text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors text-xs font-bold bg-gray-100 dark:bg-[#1b1b26] hover:bg-gray-200 dark:hover:bg-[#252535] h-6 w-6 flex items-center justify-center rounded cursor-pointer"
                 >
                   ✕
                 </button>
@@ -962,13 +962,13 @@ export default function ChatPage() {
                 {fetchingMemoryHash ? (
                   <div className="h-full flex flex-col items-center justify-center py-12 space-y-3">
                     <RefreshCw className="h-5 w-5 text-emerald-500 animate-spin" />
-                    <span className="text-xs text-gray-650 dark:text-gray-400 font-mono animate-pulse">Downloading blocks from 0G storage indexer...</span>
+                    <span className="text-xs text-gray-700 dark:text-gray-400 font-mono animate-pulse">Downloading blocks from 0G storage indexer...</span>
                   </div>
                 ) : fetchError ? (
-                  <div className="bg-rose-955/10 border border-rose-500/20 text-rose-600 dark:text-rose-300 text-sm p-4 rounded-lg font-mono space-y-2">
+                  <div className="bg-rose-500/5 dark:bg-rose-950/20 border border-rose-500/20 text-rose-600 dark:text-rose-300 text-sm p-4 rounded-lg font-mono space-y-2">
                     <p className="font-bold">❌ Download Failed</p>
-                    <p className="text-gray-650 dark:text-gray-400">{fetchError}</p>
-                    <div className="text-xs text-gray-650 pt-2 border-t border-rose-500/10">
+                    <p className="text-gray-700 dark:text-gray-400">{fetchError}</p>
+                    <div className="text-xs text-gray-700 pt-2 border-t border-rose-500/10">
                       Suggestions: Ensure the EVM block was finalized, the indexer was updated, and network latency is stable.
                     </div>
                   </div>
